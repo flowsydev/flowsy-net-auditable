@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowsy.Auditable", "Flowsy.Auditable\Flowsy.Auditable.csproj", "{4F263100-7ABB-4797-93B3-02E8E7060168}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{7F98E715-C50C-4B75-B2C1-3BB5CFC3C576}"
+	ProjectSection(SolutionItems) = preProject
+		publish.sh = publish.sh
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F263100-7ABB-4797-93B3-02E8E7060168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F263100-7ABB-4797-93B3-02E8E7060168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F263100-7ABB-4797-93B3-02E8E7060168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F263100-7ABB-4797-93B3-02E8E7060168}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

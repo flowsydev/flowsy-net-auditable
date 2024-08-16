@@ -22,4 +22,8 @@
         <NoWarn>$(NoWarn);NU5118;NU5128</NoWarn>
     </PropertyGroup>
 
+    <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
 </Project>

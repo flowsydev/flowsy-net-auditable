@@ -15,7 +15,7 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/flowsydev/flowsy-net-auditable</RepositoryUrl>
 
-        <PackageVersion>0.1.0</PackageVersion>
+        <PackageVersion>0.2.0</PackageVersion>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
 
@@ -24,6 +24,10 @@
 
     <ItemGroup>
         <None Include="../README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="UAParser" Version="3.1.47" />
     </ItemGroup>
 
 </Project>

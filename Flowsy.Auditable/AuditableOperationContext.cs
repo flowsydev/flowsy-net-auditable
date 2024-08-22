@@ -1,72 +1,73 @@
+using System.Text;
+using UAParser;
+
 namespace Flowsy.Auditable;
 
 /// <summary>
 /// Represents the context of an auditable operation.
 /// </summary>
-public sealed class AuditableOperationContext
+public sealed class AuditableOperationContext : AuditableTrail
 {
     /// <summary>
-    /// Initializes a new instance of an empty operation context.
+    /// The user associated with the operation.
     /// </summary>
-    public AuditableOperationContext() : this(
-        string.Empty,
-        string.Empty,
-        string.Empty,
-        string.Empty,
-        new Dictionary<string, object?>()
-        )
+    public AuditablePrincipal User { get; internal set; } = new();
+    
+    /// <summary>
+    /// The user account associated with the operation.
+    /// </summary>
+    public AuditablePrincipal UserAccount { get; internal set; } = new();
+    
+    /// <summary>
+    /// The user agent associated with the operation.
+    /// </summary>
+    public AuditableUserAgent? UserAgent { get; internal set; }
+    
+    /// <summary>
+    /// The application associated with the operation.
+    /// </summary>
+    public AuditableApplication Application { get; internal set; } = new();
+    
+    /// <summary>
+    /// The device that originated the operation.
+    /// </summary>
+    public AuditableDevice OriginDevice { get; internal set; } = new();
+
+    /// <summary>
+    /// The local device where the operation was performed.
+    /// </summary>
+    public AuditableDevice LocalDevice { get; internal set; } = new();
+
+    public AuditableOperation CreateOperation(AuditableOperationType type)
+        => new (type, DateTimeOffset.Now, this);
+
+    /// <summary>
+    /// Returns a string that represents the operation context.
+    /// </summary>
+    /// <returns>
+    /// A string that represents the operation context.
+    /// </returns>
+    public override string ToString()
     {
+        var sb = new StringBuilder();
+        
+        sb.AppendLine($"User: {User}, {UserAccount}");
+        sb.AppendLine($"Application: {Application}");
+        
+        if (UserAgent is not null)
+            sb.AppendLine($"User Agent: {UserAgent}");
+        
+        sb.AppendLine($"Local Device: {LocalDevice}");
+        sb.AppendLine($"Origin Device: {OriginDevice}");
+        
+        return sb.ToString();
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AuditableOperationContext"/> class.
+    /// Creates an object used to build an instance of <see cref="AuditableOperationContext"/>.
     /// </summary>
-    /// <param name="userId">
-    /// The unique identifier of the user who performed the operation.
-    /// </param>
-    /// <param name="userNickname">
-    /// The nickname of the user who performed the operation.
-    /// </param>
-    /// <param name="userAccountId">
-    /// The unique identifier of the user account who performed the operation.
-    /// </param>
-    /// <param name="userAccountEmail">
-    /// The email of the user account who performed the operation.
-    /// </param>
-    /// <param name="details">
-    /// Additional details about the operation.
-    /// </param>
-    public AuditableOperationContext(string userId, string userNickname, string userAccountId, string userAccountEmail, IDictionary<string, object?> details)
-    {
-        UserId = userId;
-        UserNickname = userNickname;
-        UserAccountId = userAccountId;
-        UserAccountEmail = userAccountEmail;
-        Details = details;
-    }
-
-    /// <summary>
-    /// The unique identifier of the user who performed the operation.
-    /// </summary>
-    public string UserId { get; private set; }
-    
-    /// <summary>
-    /// The nickname of the user who performed the operation.
-    /// </summary>
-    public string UserNickname { get; private set; }
-    
-    /// <summary>
-    /// The unique identifier of the user account who performed the operation.
-    /// </summary>
-    public string UserAccountId { get; private set; }
-    
-    /// <summary>
-    /// The email of the user account who performed the operation.
-    /// </summary>
-    public string UserAccountEmail { get; private set; }
-    
-    /// <summary>
-    /// Additional details about the operation.
-    /// </summary>
-    public IDictionary<string, object?> Details { get; private set; }
+    /// <returns>
+    /// An instance of <see cref="AuditableOperationContextBuilder"/>.
+    /// </returns>
+    public static AuditableOperationContextBuilder Create() => new (new AuditableOperationContext());
 }

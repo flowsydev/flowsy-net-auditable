@@ -1,5 +1,8 @@
 namespace Flowsy.Auditable;
 
+/// <summary>
+/// Represents an auditable lifetime.
+/// </summary>
 public sealed class AuditableLifetime
 {
     /// <summary>
@@ -56,4 +59,12 @@ public sealed class AuditableLifetime
     /// <returns></returns>
     public bool IsAlive(DateTimeOffset targetInstant)
         => targetInstant >= Start && targetInstant <= End;
+
+    /// <summary>
+    /// Returns a string that represents the lifetime object.
+    /// </summary>
+    /// <returns>
+    /// A string that represents the lifetime object.
+    /// </returns>
+    public override string ToString() => $"{Start:O} => {End:O} ({Duration})";
 }

@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Flowsy.Auditable;
 
 /// <summary>
@@ -87,4 +89,28 @@ public sealed class AuditableOperation
     /// The time remaining until the operation is executed.
     /// </returns>
     public TimeSpan GetRemainingTime(DateTimeOffset targetInstant) => Instant - targetInstant;
+    
+    public static AuditableOperation Create()
+        => new (AuditableOperationType.Void, DateTimeOffset.Now, new AuditableOperationContext());
+
+    /// <summary>
+    /// Returns a string that represents the operation object.
+    /// </summary>
+    /// <returns>
+    /// A string that represents the operation object.
+    /// </returns>
+    public override string ToString()
+    {
+        var stringBuilder = new StringBuilder();
+
+        var operationName = Type.ToString();
+        var operationNameLength = operationName.Length;
+        var operationNameSeparator = new string('-', operationNameLength);
+
+        stringBuilder.AppendLine(operationNameSeparator);
+        stringBuilder.AppendLine($"{operationName}: {Instant:O}");
+        stringBuilder.Append(Context);
+        
+        return stringBuilder.ToString();
+    }
 }

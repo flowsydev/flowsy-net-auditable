@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{7F98E7
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowsy.Auditable.Test", "Flowsy.Auditable.Test\Flowsy.Auditable.Test.csproj", "{BFA979E3-49FD-49A2-943B-3763AA2CE3DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{4F263100-7ABB-4797-93B3-02E8E7060168}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F263100-7ABB-4797-93B3-02E8E7060168}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F263100-7ABB-4797-93B3-02E8E7060168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFA979E3-49FD-49A2-943B-3763AA2CE3DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFA979E3-49FD-49A2-943B-3763AA2CE3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFA979E3-49FD-49A2-943B-3763AA2CE3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFA979E3-49FD-49A2-943B-3763AA2CE3DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
